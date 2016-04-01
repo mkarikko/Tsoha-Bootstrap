@@ -3,7 +3,7 @@
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](https://www.karikko.users.cs.helsinki.fi/Muistilista)
-* [Linkki dokumentaatiooni](https://www.github.com/mkarikko/Tsoha-Bootstrap/doc/documentaatio.pdf)
+* [Linkki dokumentaatiooni](https://www.github.com/mkarikko/Tsoha-Bootstrap/doc/dokumentaatio.pdf)
 
 ## Työn aihe
 
