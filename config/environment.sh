@@ -3,5 +3,5 @@
 # korvaa tämä omalla käyttäjätunnuksellasi
 USERNAME="karikko"
 # korvaa tämä haluamallasi kansion nimellä
-PROJECT_FOLDER="tsoha2"
+PROJECT_FOLDER="Muistilista"
 # sovelluksesi tulee sijaitsemaan osoitteessa USERNAME.users.cs.helsinki.fi/PROJECT_FOLDER
