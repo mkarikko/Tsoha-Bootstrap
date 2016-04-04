@@ -28,7 +28,7 @@
     HelloWorldController::askar_list();
   });
 
-  $routes->get('askar/1', function() {
+  $routes->get('/askar/1', function() {
     HelloWorldController::askar_show();
   });
 
