@@ -2,17 +2,17 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://karikko.users.cs.helsinki.fi/Muistilista)
+* [Linkki sovellukseeni](https://karikko.users.cs.helsinki.fi/tsoha2)
 * [Linkki dokumentaatiooni](https://www.github.com/mkarikko/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 * [Linkit esimerkkisivuille]
   * Etusivu: (https://karikko.users.cs.helsinki.fi/tsoha2/)
-  * Muistilistojen listaussivu: (https://karikko.users.cs.helsinki.fi/Muistilista/mlista)
-  * Muistilistojen esittelysivu: (https://karikko.users.cs.helsinki.fi/Muistilista/mlista/1)
-  * Muistilistojen muokkaussivu: (https://karikko.users.cs.helsinki.fi/Muistilista/mledit)
-  * Askareiden listaussivu: (https://karikko.users.cs.helsinki.fi/Muistilista/askar)
-  * Askareiden esittelysivu: (https://karikko.users.cs.helsinki.fi/Muistilista/askar/1)
-  * Askareiden muokkaussivu: (https://karikko.users.cs.helsinki.fi/Muistilista/askar/aedit)
+  * Muistilistojen listaussivu: (https://karikko.users.cs.helsinki.fi/tsoha2/mlista)
+  * Muistilistojen esittelysivu: (https://karikko.users.cs.helsinki.fi/tsoha2/mlista/1)
+  * Muistilistojen muokkaussivu: (https://karikko.users.cs.helsinki.fi/tsoha2/mledit)
+  * Askareiden listaussivu: (https://karikko.users.cs.helsinki.fi/tsoha2/askar)
+  * Askareiden esittelysivu: (https://karikko.users.cs.helsinki.fi/tsoha2/askar/1)
+  * Askareiden muokkaussivu: (https://karikko.users.cs.helsinki.fi/tsoha2/askar/aedit)
 
 
 ## Työn aihe
