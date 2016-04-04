@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Hae paketti postista</h1>
+  <!-- Painikkeet tähän -->
+  <p>
+    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
+  </p>
+  <!-- Tiedot tulee listana tähän -->
+  <ul>
+    <li><strong>Suoritettava viimeistään</strong> 11.4.2016</li>
+    <li><strong>Tärkeysaste:</strong> 4</li>
+    <li><strong>Status:</strong> <label class="label label-danger">Tekemättä</label></li>
+    <li><strong>Lisäyspäivä:</strong> 29.3.2016</li>
+  </ul>
+  <!-- Kuvaus tulee tähän -->
+  <p>
+    Hae Verkkiksen paketti postista 11.4. mennessä.
+  </p>
+{% endblock %}

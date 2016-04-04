@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Yleismuistilista</h1>
+  <!-- Painikkeet tähän -->
+  <p>
+    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
+  </p>
+  <!-- Tiedot tulee listana tähän -->
+  <ul>
+    <li><strong>Luotu:</strong> 11.11.2011</li>
+    <li><strong>Tärkeys:</strong> 4</li>
+    <li><strong>Status:</strong> <label class="label label-danger">Kesken</label></li>
+    <li><strong>Viimeinen voimassaolopäivä:</strong></li>
+  </ul>
+  <!-- Kuvaus tulee tähän -->
+  <p>
+    Muistilista jokapäiväiseen käyttöön. 
+  </p>
+{% endblock %}

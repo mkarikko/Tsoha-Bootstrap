@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muokkaa askaretta Hae paketti postista</h1>
+
+  <form>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox">
+        Suoritettu
+      </label>
+    </div>
+    <div class="form-group">
+      <label>Nimi</label>
+      <input type="text" class="form-control" value="Hae paketti postista">
+    </div>
+    <div class="form-group">
+      <label>Suoritettava viimeistään</label>
+      <input type="text" class="form-control" value="11.4.2016">
+    </div>
+    <div class="form-group">
+      <label>Tärkeysaste</label>
+      <input type="text" class="form-control" value="4">
+    </div>
+    <div class="form-group">
+      <label>Kuvaus</label>
+      <textarea class="form-control">Hae Verkkiksen paketti postista 11.4. mennessä.
+      </textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}
