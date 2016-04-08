@@ -36,3 +36,6 @@
     HelloWorldController::askar_edit();
   });
 
+  $routes->get('/muistilista', funtion(){
+	MuistilistaController::index();
+  }};	

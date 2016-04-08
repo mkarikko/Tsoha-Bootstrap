@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Käyttäjän Mikis muistilistat</h1>
+
+  <p>
+    <a href="{{base_path}}/muistilista/uusi" class="btn btn-success">Lisää uusi muistilista</a>
+  </p>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Nimi</th>
+        <th>Luotu</th>
+        <th>Tärkeys</th>
+        <th>Status</th>
+        <th>Viimeinen voimassaolopäivä</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- Listataan muistilistat tähän -->
+      {% for muistilista in muistilistat %}
+        <tr>
+          <td><a href="{{base_path}}/muistilista/{{muistilista.id}}">{{muistilista.name}}</td>
+          <td>{{muistilista.luotu}}</td>
+          <td>{{muistilista.tarkeys}}</td>
+          <td>
+		  	  {% if muistilista.status %}
+		  		  <label class="label label-success">Suoritettu
+			  {% else } 
+				  </label class="label label-danger"> Kesken
+			  { % endif %}
+	  	  </td>
+          <td>{{muistilista.voimassaolopaiva}}</td>
+          <td>{{muistilista.kuvaus}}</td>
+          <th><a class="btn btn-default btn-sm" href="{{base.path}}/muistilista/{{muistilista.id}}/muokkaa">Muokkaa</a></th>
+        </tr>
+      {% end for}
+    </tbody>
+  </table>
+{% endblock %}
