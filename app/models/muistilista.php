@@ -8,9 +8,6 @@ class Muistilista extends BaseModel{
     parent::__construct($attributes);
   }
 
-  $yleislista = new Muistilista(array('id' => 1, 'nimi' => 'Yleismuistilista', 'tarkeys' => '4', 'luomispaiva'=> '2011-11-11', 'status' =>'kesken', 'voimassaolopaiva' => '2050-12-31', 'kuvaus' => 'Yleismuistilista jokapäiväisille askareille.'));
-
-  echo $yleislista->nimi;
 
   public static function all(){
     $query = DB::connection()->prepare('SELECT * FROM Muistilista');
@@ -31,9 +28,9 @@ class Muistilista extends BaseModel{
       ));
     }
 
-    return $muistilistat
+    return $muistilistat;
 
-  }
+} 
 
   public static function find($id){
     $query = DB::connection()->prepare('SELECT * FROM Muistilista WHERE id = :id LIMIT 1');

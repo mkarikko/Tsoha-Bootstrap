@@ -33,5 +33,28 @@ class Muistilista extends BaseModel{
 
     return $muistilistat
 
-  } 
+  }
+
+  public static function find($id){
+    $query = DB::connection()->prepare('SELECT * FROM Muistilista WHERE id = :id LIMIT 1');
+    $query->execute(array('id' => $id));
+    $row = $query->fetch();
+
+    if($row){
+      $muistilista = new Muistilista(array(
+        'id' => $row['id'],
+        'kayttaja_id' => $row['kayttaja_id'],
+        'nimi' => $row['nimi'],
+        'tarkeys' => $row['tarkeys'],
+        'luomispaiva' => $row['luomispaiva'],
+        'status' => $row['status'],
+        'voimassaolopaiva' => $row['voimassaolopaiva'],
+        'kuvaus' => $row['kuvaus']
+      ));
+
+      return $muistilista;
+    } 
+
+    return null;
+  }
 }

@@ -1,6 +1,6 @@
 <?php
 
-  require 'app/models/muistilista.php';
+
   class HelloWorldController extends BaseController{
 
 //    public static function index(){
@@ -11,7 +11,7 @@
     public static function sandbox(){
       // Testaa koodiasi täällä
 //      View::make('helloworld.html');
-      $yleislista = Muistilista:find(1);
+      $yleislista = Muistilista::find(1);
       $muistilistat = Muistilista::all();
       Kint::dump($muistilistat);
       Kint::dump($yleislista);
