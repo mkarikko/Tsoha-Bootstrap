@@ -7,7 +7,7 @@ CREATE TABLE Kayttaja(
 
 CREATE TABLE Muistilista(
   id SERIAL PRIMARY KEY,
-  kayttaja_id INTEGER REFERENCES Kayttaja(id),
+  ktunnus INTEGER REFERENCES Kayttaja(id),
   nimi varchar(50) NOT NULL,
   tarkeys integer NOT NULL,
   luomispaiva DATE,
