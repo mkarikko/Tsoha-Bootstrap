@@ -24,18 +24,18 @@
     HelloWorldController::login();
   });
 
-  $routes->get('/askar', function() {
-    HelloWorldController::askar_list();
+  $routes->get('/askare', function() {
+    HelloWorldController::askare_list();
   });
 
-  $routes->get('/askar/1', function() {
-    HelloWorldController::askar_show();
+  $routes->get('/askare/1', function() {
+    HelloWorldController::askare_show();
   });
 
-  $routes->get('/askar/aedit', function() {
-    HelloWorldController::askar_edit();
+  $routes->get('/askare/aedit', function() {
+    HelloWorldController::askare_edit();
   });
 
-  $routes->get('/muistilista', funtion(){
+  $routes->get('/muistilista', function() {
 	MuistilistaController::index();
-  }};	
+  });

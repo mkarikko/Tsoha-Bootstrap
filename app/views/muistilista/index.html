@@ -14,7 +14,8 @@
         <th>Tärkeys</th>
         <th>Status</th>
         <th>Viimeinen voimassaolopäivä</th>
-        <th></th>
+        <th>Kuvaus</th>
+	<th></th>
       </tr>
     </thead>
 
@@ -22,21 +23,21 @@
       <!-- Listataan muistilistat tähän -->
       {% for muistilista in muistilistat %}
         <tr>
-          <td><a href="{{base_path}}/muistilista/{{muistilista.id}}">{{muistilista.name}}</td>
+          <td><a href="{{base_path}}/muistilista/{{muistilista.id}}">{{muistilista.nimi}}</td>
           <td>{{muistilista.luotu}}</td>
           <td>{{muistilista.tarkeys}}</td>
           <td>
-		  	  {% if muistilista.status %}
-		  		  <label class="label label-success">Suoritettu
-			  {% else } 
-				  </label class="label label-danger"> Kesken
-			  { % endif %}
-	  	  </td>
+		{% if muistilista.status %}
+		<label class="label label-success">Suoritettu
+		{% else %}
+		<label class="label label-danger">Kesken
+		{% endif %}
+	  	</td>
           <td>{{muistilista.voimassaolopaiva}}</td>
           <td>{{muistilista.kuvaus}}</td>
           <th><a class="btn btn-default btn-sm" href="{{base.path}}/muistilista/{{muistilista.id}}/muokkaa">Muokkaa</a></th>
         </tr>
-      {% end for}
+      {% endfor %}
     </tbody>
   </table>
 {% endblock %}

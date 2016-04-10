@@ -16,7 +16,7 @@ CREATE TABLE Muistilista(
   kuvaus text 
 );
 
-CREATE TABLE Askar(
+CREATE TABLE Askare(
   id SERIAL PRIMARY KEY,
   kayttaja_id INTEGER REFERENCES Kayttaja(id),
   muistilista_id INTEGER REFERENCES Muistilista(id),

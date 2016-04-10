@@ -21,16 +21,16 @@
       View::make('suunnitelmat/index.html');
     }
 
-    public static function askar_list(){
-      View::make('suunnitelmat/askar_list.html');
+    public static function askare_list(){
+      View::make('suunnitelmat/askare_list.html');
     }
 
-    public static function askar_show(){
-      View::make('suunnitelmat/askar_show.html');
+    public static function askare_show(){
+      View::make('suunnitelmat/askare_show.html');
     }
 
-    public static function askar_edit(){
-    View::make('suunnitelmat/askar_list.html');
+    public static function askare_edit(){
+    View::make('suunnitelmat/askare_list.html');
     }
 
     public static function login(){
