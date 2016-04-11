@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{muistilista.nimi}}</h1>
+  <!-- Painikkeet tähän -->
+  <p>
+    <a href="{{base_path}}/muistilista/mledit" class="btn btn-default">Muokkaa</a>
+  </p>
+  <!-- Tiedot tulee listana tähän -->
+  <ul>
+    <li><strong>Luotu:</strong> {{muistilista.luotu}}</li>
+    <li><strong>Tärkeys:</strong> {{muistilista.tarkeys}}</li>
+    <li><strong>Status:</strong> <label class="label label-danger">{{muistilista.status}}</label></li>
+    <li><strong>Viimeinen voimassaolopäivä:</strong> {{muistilista.voimassaolopaiva}}</li>
+  </ul>
+  <!-- Kuvaus tulee tähän -->
+  <p>
+    {{muistilista.kuvaus}}
+  </p>
+{% endblock %}
+
+

@@ -36,6 +36,23 @@
     HelloWorldController::askare_edit();
   });
 
-  $routes->get('/muistilista', function() {
+  $routes->get('/', function() {
 	MuistilistaController::index();
   });
+
+  $routes->get('/muistilista', function() {
+        MuistilistaController::index();
+  });
+
+  $routes->post('/muistilista', function() {
+        MuistilistaController::store();
+  });
+
+  $routes->get('/muistilista/new', function() {
+        MuistilistaController::create();
+  });
+
+  $routes->get('/muistilista/:id', function($id) {
+        MuistilistaController::show($id);
+  });
+
