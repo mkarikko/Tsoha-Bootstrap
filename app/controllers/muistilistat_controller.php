@@ -30,12 +30,12 @@ class MuistilistaController extends BaseController{
             'kuvaus' => $params['kuvaus']
         ));
 
-        Kint::dump($params);
+        //Kint::dump($params);
 
         // Kutsutaan alustamamme olion save metodia, joka tallentaa olion tietokantaan
         $muistilista->save();
 
         // Ohjataan käyttäjä lisäyksen jälkeen muistilistan esittelysivulle
-        //Redirect::to('/muistilista/' . $muistilista->id, array('message' => 'Uusi muistilista on lisätty kirjastoosi!'));
+        Redirect::to('/muistilista/' . $muistilista->id, array('message' => 'Uusi muistilista on lisätty kirjastoosi!'));
      }
 }
