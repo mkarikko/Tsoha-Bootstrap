@@ -8,14 +8,13 @@ class MuistilistaController extends BaseController{
                 View::make('muistilista/index.html', array('muistilistat' => $muistilistat));
     }
 
-    public function save(){
-    	$query = DB::connnection()->prepare('INSERT INTO Muistilista (nimi, luotu, tarkeys, status, voimassaolopaiva, kuvaus) VALUES (:nimi, :luotu, :tarkeys, :status, :voimassaolopaiva, :kuvaus) RETURNING id');
-    	$query->execute(array('nimi' => $this->nimi, 'luotu' => $this->luotu, 'tarkeys' => $this-> tarkeys, 'status' => $this->status, 'voimassaolopaiva' => $this->voimassaolopaiva, 'kuvaus' => $this->kuvaus));
-    	$row = $query->fetch();
-    	Kint::trace();
-    	Kint::dump($row)
+    public static function create(){
+        View::make('muistilista/uusi.html');
+    }
 
-    	//$this->id = $row['id'];
+    public static function show(){
+        View::make('muistilista/mlista_show.html');
+        $muistilista->find($id);
     }
 
     public static function store(){
@@ -24,7 +23,7 @@ class MuistilistaController extends BaseController{
         // Alustetaan uusi Muistilista-luokan olion käyttäjän syöttämillä arvoilla
         $muistilista = new Muistilista(array(
             'nimi' => $params['nimi'],
-            'luotu' => $params['luotu'],
+            'luomispaiva' => $params['luomispaiva'],
             'tarkeys' => $params['tarkeys'],
             'status' => $params['status'],
             'voimassaolopaiva' => $params['voimassaolopaiva'],

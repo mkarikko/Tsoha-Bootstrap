@@ -48,7 +48,7 @@
         MuistilistaController::store();
   });
 
-  $routes->get('/muistilista/new', function() {
+  $routes->get('/muistilista/uusi', function() {
         MuistilistaController::create();
   });
 

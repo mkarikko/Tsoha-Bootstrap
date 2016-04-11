@@ -8,6 +8,15 @@ class Muistilista extends BaseModel{
     parent::__construct($attributes);
   }
 
+  public function save(){
+      $query = DB::connection()->prepare('INSERT INTO Muistilista (nimi, luomispaiva, tarkeys, status, voimassaolopaiva, kuvaus) VALUES (:nimi, :luomispaiva, :tarkeys, :status, :voimassaolopaiva, :kuvaus) RETURNING id');
+      $query->execute(array('nimi' => $this->nimi, 'luomispaiva' => $this->luomispaiva, 'tarkeys' => $this->tarkeys, 'status' => $this->status, 'voimassaolopaiva' => $this->voimassaolopaiva, 'kuvaus' => $this->kuvaus));
+      $row = $query->fetch();
+      Kint::trace();
+      Kint::dump($row);
+
+      //$this->id = $row['id'];
+    }
 
   public static function all(){
     $query = DB::connection()->prepare('SELECT * FROM Muistilista');
