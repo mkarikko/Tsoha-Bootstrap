@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "muistilista/macros/forms.html" as forms %}
 
   <div class="alert alert-success">
     {{message}}
@@ -21,7 +22,8 @@
   
 <!-- Painikkeet tähän -->
   <p>
-    <a href="{{base_path}}/muistilista/mledit" class="btn btn-default">Muokkaa</a>
+    {{forms.destroy_button("#{base_path}/muistilista/#{muistilista.id}/destroy")}}
+    <a href="{{base_path}}/muistilista/mlista_edit.html" class="btn btn-default">Muokkaa</a>
   </p>
 
 {% endblock %}

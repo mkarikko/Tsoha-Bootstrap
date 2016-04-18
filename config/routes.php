@@ -1,6 +1,52 @@
 <?php
 
   $routes->get('/', function() {
+	MuistilistaController::index();
+  });
+
+  $routes->get('/muistilista', function() {
+        MuistilistaController::index();
+  });
+
+  $routes->post('/muistilista', function() {
+        MuistilistaController::store();
+  });
+
+  $routes->get('/muistilista/uusi', function() {
+        MuistilistaController::create();
+  });
+
+  $routes->get('/muistilista/:id', function($id) {
+        MuistilistaController::show($id);
+  });
+
+  $routes->get('/muistilista/:id/mlista_edit', function($id) {
+    // Muistilistan muokkauslomake
+        MuistilistaController::edit($id);
+  });
+
+  $routes->post('/muistilista/:id/mlista_edit', function($id) {
+        MuistilistaController::update($id);
+  });
+
+  $routes->post('/muistilista/:id/destroy', function($id) {
+        MuistilistaController::destroy($id);
+  });
+  
+  $routes->get('/login', function(){
+  // Kirjautumislomakkeen esittäminen
+  UserController::login();
+  });
+
+  $routes->post('/login', function(){
+  // Kirjautumisen käsittely
+  UserController::handle_login();
+  });
+
+
+// --- ESIMERKIT ----
+
+  $routes->get('/', function() {
     HelloWorldController::index();
   });
 
@@ -35,24 +81,3 @@
   $routes->get('/askare/aedit', function() {
     HelloWorldController::askare_edit();
   });
-
-  $routes->get('/', function() {
-	MuistilistaController::index();
-  });
-
-  $routes->get('/muistilista', function() {
-        MuistilistaController::index();
-  });
-
-  $routes->post('/muistilista', function() {
-        MuistilistaController::store();
-  });
-
-  $routes->get('/muistilista/uusi', function() {
-        MuistilistaController::create();
-  });
-
-  $routes->get('/muistilista/:id', function($id) {
-        MuistilistaController::show($id);
-  });
-

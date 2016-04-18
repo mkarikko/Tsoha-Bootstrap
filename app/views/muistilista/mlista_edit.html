@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h1>Muokkaa muistilistaa {{muistilista.nimi}}</h1>
+
+  <form>
+    
+    <div class="form-group">
+      <label>Nimi</label>
+      <input type="text" class="form-control" value={{muistilista.nimi}}>
+    </div>
+
+    <div class="form-group">
+      <label>Luotu</label>
+      <input type="text" class="form-control" value={{muistilista.luomispaiva}}>
+    </div>
+
+     <div class="form-group">
+      <label>Tärkeys</label>
+      <select name="tarkeys"=>
+        <option value="1">1 (ei tärkeä)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (tärkein)</option>
+      </select>
+    </div>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox">
+        Suoritettu
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Viimeinen voimassaolopäivä</label>
+      <input type="date" class="form-control" value="{{muistilista.voimassaolopaiva}}">
+    </div>
+
+    <div class="form-group">
+      <label>Kuvaus</label>
+      <textarea class="form-control">{{muistilista.kuvaus}}
+      </textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}

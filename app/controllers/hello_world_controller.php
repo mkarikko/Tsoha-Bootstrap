@@ -15,6 +15,19 @@
       $muistilistat = Muistilista::all();
       Kint::dump($muistilistat);
       Kint::dump($yleislista);
+      
+    function validateDate($date, $format = 'd.m.Y'){
+    $d = DateTime::createFromFormat($format, $date);
+    if($d == FALSE){
+	  echo 'Syötä päivämäärä muodossa pp.kk.vvvv!';
+    }
+    return $d && $d->format($format) == $date;
+    
+    
+}
+var_dump(validateDate('01.04.2016'));
+var_dump(validateDate('1.4.2016'));
+var_dump(validateDate('1.04.2016'));
     }
 
     public static function index(){
