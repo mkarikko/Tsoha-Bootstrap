@@ -13,11 +13,11 @@ class Muistilista extends BaseModel {
       $query = DB::connection()->prepare('INSERT INTO Muistilista (nimi, luomispaiva, tarkeys, status, voimassaolopaiva, kuvaus) VALUES (:nimi, :luomispaiva, :tarkeys, :status, :voimassaolopaiva, :kuvaus) RETURNING id');
       $query->execute(array('nimi' => $this->nimi, 'luomispaiva' => $this->luomispaiva, 'tarkeys' => $this->tarkeys, 'status' => $this->status, 'voimassaolopaiva' => $this->voimassaolopaiva, 'kuvaus' => $this->kuvaus));
       $row = $query->fetch();
-      //Kint::trace();
-      //Kint::dump($row);
+//Kint::trace();
+//Kint::dump($row);
 
       $this->id = $row['id'];
-    }
+  }
 
   public static function all() {
     $query = DB::connection()->prepare('SELECT * FROM Muistilista');
@@ -40,11 +40,11 @@ class Muistilista extends BaseModel {
 
     return $muistilistat;
 
-} 
+  } 
 
   public static function find($id) {
     $query = DB::connection()->prepare('SELECT * FROM Muistilista WHERE id = :id LIMIT 1');
-    $query->execute(array('id' => $id));
+    $query->execute(array('id' => (int)$id));
     $row = $query->fetch();
 
     if($row) {
@@ -65,35 +65,37 @@ class Muistilista extends BaseModel {
     return null;
   }
 
-  public static function update($id) {
-    $params = $_POST;
-    $attributes = array(
-      'id' => $id,
-      'nimi' => $params['nimi'],
-      'luomispaiva' => $params['luomispaiva'],
-      'tarkeys' => $params['tarkeys'],
-      'status' => $params['status'],
-      'voimassaolopaiva' => $params['voimassaolopaiva'],
-      'kuvaus' => $params['kuvaus']
-    );
+  public static function update() {
+    $query = DB::connection()->prepare('UPDATE Muistilista SET nimi = :nimi, luomispaiva = :luomispaiva, tarkeys = :tarkeys, status = :status, voimassaolopaiva = :voimassaolopaiva, kuvaus = :kuvaus WHERE id = :id');  
+     $query->execute(array('nimi' => $this->nimi, 'luomispaiva' => $this->luomispaiva, 'tarkeys' => $this->tarkeys, 'status' => $this->status, 'voimassaolopaiva' => $this->voimassaolopaiva, 'kuvaus' => $this->kuvaus, 'id' => $this->id));
+      $row = $query->fetch(); 
+        $this->id = $row['id'];
+  }
+
+//    $params = $_POST;
+//    $attributes = array(
+//      'id' => $id,
+//      'nimi' => $params['nimi'],
+//      'luomispaiva' => $params['luomispaiva'],
+//      'tarkeys' => $params['tarkeys'],
+//      'status' => $params['status'],
+//      'voimassaolopaiva' => $params['voimassaolopaiva'],
+//      'kuvaus' => $params['kuvaus']
+//    );
 
     // Alustetaan Muistilista-olio käyttäjän syöttämillä tiedoilla
-    $muistilista = new Muistilistaa($attributes);
-    $errors = $muistilista->errors();
+//    $muistilista = new Muistilistaa($attributes);
+//    $errors = $muistilista->errors();
 
-    if(count($errors) > 0) {
-      View::make('muistilista/mlista_edit.html', array('errors' => $errors, 'attributes' => $attributes));
-    } else {
+//    if(count($errors) > 0) {
+//      View::make('muistilista/mlista_edit.html', array('errors' => $errors, 'attributes' => $attributes));
+//    } else {
       // Kutsutaan alustetun olion update-metodia, joka päivittää pelin tiedot tietokannassa
-      $muistilista->update();
+//      $muistilista->update();
 
-      Redirect::to('/muistilista/' . $muistilista->id, array('message' => 'Muistilistaa on muokattu onnistuneesti!'));
-    }
-  }
-//    $query = DB::connection()->prepare('UPDATE Muistilista SET nimi = :nimi, luomispaiva = :luomispaiva, tarkeys = :tarkeys, status = :status, voimassaolopaiva = :voimassaolopaiva, kuvaus = :kuvaus WHERE id = :id');  
-//     $query->execute(array('nimi' => $this->nimi, 'luomispaiva' => $this->luomispaiva, 'tarkeys' => $this->tarkeys, 'status' => $this->status, 'voimassaolopaiva' => $this->voimassaolopaiva, 'kuvaus' => $this->kuvaus, 'id' => $this->id));
-//      $row = $query->fetch(); 
-//        $this->id = $row['id'];
+//      Redirect::to('/muistilista/' . $muistilista->id, array('message' => 'Muistilistaa on muokattu onnistuneesti!'));
+//    }
+//  }
  
   public function destroy() {
     $query = DB::connection()->prepare('DELETE FROM Muistilista WHERE id = :id');

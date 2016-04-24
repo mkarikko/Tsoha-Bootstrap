@@ -22,9 +22,12 @@
   
 <!-- Painikkeet tähän -->
   <p>
-    {{forms.destroy_button("#{base_path}/muistilista/#{muistilista.id}/destroy")}}
-    <a href="{{base_path}}/muistilista/mlista_edit.html" class="btn btn-default">Muokkaa</a>
+    
+     <a href="{{base_path}}/muistilista/{{muistilista.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
+<!--    <a href="{{base_path}}/muistilista/mlista_edit.html" class="btn btn-default">Muokkaa</a>  -->
   </p>
+  
+  <p>{{forms.destroy_button("#{base_path}/muistilista/#{muistilista.id}/destroy")}}</p>
 
 {% endblock %}
 
