@@ -3,6 +3,16 @@
 
   <h1>Kirjaudu sisään</h1>
 
+
+  {% if error %}
+  <div class="alert alert-danger">
+      <ul>
+          <li>{{error}}</li>
+      </ul>
+  </div>
+  {% endif %}
+
+
   <!-- Kaikki lomakkeen elementit form-tagin sisään -->
   <form method="post" action="{{base_path}}/muistilista/login">>
     <!-- Tekstikenttä käyttäjätunnukselle -->
