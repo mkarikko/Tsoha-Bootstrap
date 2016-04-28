@@ -35,12 +35,12 @@
         MuistilistaController::destroy($id);
   });
   
-  $routes->get('/muistilista/login', function(){
+  $routes->get('/login', function(){
   // Kirjautumislomakkeen esittäminen
   UserController::login();
   });
 
-  $routes->post('/muistilista/login', function(){
+  $routes->post('/login', function(){
   // Kirjautumisen käsittely
   UserController::handle_login();
   });
@@ -49,13 +49,13 @@
   UserController::logout();
   }); 
 
-  $routes->get('/login', function() {
-    HelloWorldController::login();
-  });
+//  $routes->get('/login', function() {
+//    HelloWorldController::login();
+//  });
 
 // --- ESIMERKIT ----
-
-/*  $routes->get('/', function() {
+/*
+  $routes->get('/', function() {
     HelloWorldController::index();
   });
 
@@ -90,4 +90,4 @@
   $routes->get('/askare/aedit', function() {
     HelloWorldController::askare_edit();
   });
-*/
+//*/

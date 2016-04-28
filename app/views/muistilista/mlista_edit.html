@@ -18,12 +18,12 @@
     
     <div class="form-group">
       <label>Nimi</label>
-      <input type="text" class="form-control" value={{muistilista.nimi}}>
+      <input type="text" class="form-control" name="nimi" value={{muistilista.nimi}}>
     </div>
 
     <div class="form-group">
       <label>Luomispäivä</label>
-      <input type="text" class="form-control" value={{muistilista.luomispaiva}}>
+      <input type="text" class="form-control" name="luomispaiva" value={{muistilista.luomispaiva}}>
     </div>
 
      <div class="form-group">
@@ -37,21 +37,20 @@
       </select>
     </div>
 
-    <div class="checkbox">
-      <label>
-        <input type="checkbox">
-        Suoritettu
-      </label>
+    <div class="form-group">
+      <label>Status</label>
+      <input type="radio" name="status" value="FALSE" checked> Kesken      
+      <input type="radio" name="status" value="TRUE" checked> Suoritettu
     </div>
-
+      
     <div class="form-group">
       <label>Viimeinen voimassaolopäivä</label>
-      <input type="date" class="form-control" value="{{muistilista.voimassaolopaiva}}">
+      <input type="date" name="voimassaolopaiva" class="form-control" value="{{muistilista.voimassaolopaiva}}">
     </div>
 
     <div class="form-group">
       <label>Kuvaus</label>
-      <textarea class="form-control">{{muistilista.kuvaus}}
+      <textarea name="kuvaus" class="form-control">{{muistilista.kuvaus}}
       </textarea>
     </div>
 
@@ -59,9 +58,9 @@
       <button type="submit" class="btn btn-primary">Tallenna muutokset</button>
     </div>
     
-    <!-- Painikkeet tähän -->
+    <!-- Painikkeet tähän
   <p>
     {{forms.destroy_button("#{base_path}/muistilista/#{muistilista.id}/destroy")}}
-  </p>
+  </p> -->
   </form>
 {% endblock %}

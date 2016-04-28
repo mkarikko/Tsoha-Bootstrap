@@ -65,11 +65,11 @@ class Muistilista extends BaseModel {
     return null;
   }
 
-  public static function update() {
+  public function update() {
     $query = DB::connection()->prepare('UPDATE Muistilista SET nimi = :nimi, luomispaiva = :luomispaiva, tarkeys = :tarkeys, status = :status, voimassaolopaiva = :voimassaolopaiva, kuvaus = :kuvaus WHERE id = :id');  
      $query->execute(array('nimi' => $this->nimi, 'luomispaiva' => $this->luomispaiva, 'tarkeys' => $this->tarkeys, 'status' => $this->status, 'voimassaolopaiva' => $this->voimassaolopaiva, 'kuvaus' => $this->kuvaus, 'id' => $this->id));
       $row = $query->fetch(); 
-        $this->id = $row['id'];
+//        $this->id = $row['id'];
   }
 
 //    $params = $_POST;

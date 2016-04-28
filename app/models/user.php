@@ -1,10 +1,13 @@
 <?php
 class User extends BaseModel {
+    
     public $id, $kayttajatunnus, $salasana;
+    
     public function __construct($attributes) {
         parent::__construct($attributes);
         $this->validators = array('validate_kayttajatunnus');
     }
+    
     public function authenticate($kayttajatunnus, $salasana) {
         $query = DB::connection()->prepare('SELECT * FROM User WHERE kayttajatunnus = :kayttajatunnus AND salasana = :salasana LIMIT 1');
         $query->execute(array('kayttajatunnus' => $kayttajatunnus, 'salasana' => $salasana));
@@ -22,7 +25,8 @@ class User extends BaseModel {
             // Käyttäjää ei löytynyt, palautetaan null
         }
     }
-     public static function find($id) {
+    
+    public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM User WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
         $row = $query->fetch();

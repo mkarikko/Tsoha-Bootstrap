@@ -12,7 +12,13 @@
 
 <li><strong>Luomispäivä:</strong> {{muistilista.luomispaiva}}</li>
     <li><strong>Tärkeys:</strong> {{muistilista.tarkeys}}</li>
-    <li><strong>Status:</strong> <label class="label label-danger">{{muistilista.status}}</label></li>
+    <li><strong>Status:</strong> 
+      {% if muistilista.suoritettu %}
+      <label class="label label-success">suoritettu</label>
+    {% else %}
+      <label class="label label-danger">kesken</label>
+    {% endif %}
+<!--    <label class="label label-danger">{{muistilista.status}}</label></li> -->
     <li><strong>Viimeinen voimassaolopäivä:</strong> {{muistilista.voimassaolopaiva}}</li>
   </ul>
   <!-- Kuvaus tulee tähän -->

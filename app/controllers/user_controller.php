@@ -5,7 +5,7 @@
   public static function login() {
       View::make('muistilista/login.html');
   }
-
+  
   public static function handle_login() {
     $params = $_POST;
 
@@ -16,13 +16,13 @@
     } else {
       $_SESSION['user'] = $user->id;
 
-      Redirect::to('/', array('message' => 'Tervetuloa takaisin ' . $user->nimi . '!'));
+      Redirect::to('/', array('message' => 'Tervetuloa takaisin ' . $user->kayttajatunnus . '!'));
     }
   }
   
   public static function logout(){
     $_SESSION['user'] = null;
-    Redirect::to('/login', array('message' => 'Olet kirjautunut ulos!'));
+    Redirect::to('/muistilista/login', array('message' => 'Olet kirjautunut ulos!'));
   }
   
 }

@@ -24,7 +24,8 @@ class MuistilistaController extends BaseController {
 //      self::check_logged_in();
     
     $params = $_POST;
-
+//    Kint::dump($params);
+//    die("tuleeko tänne");
     $attributes = array(
       'id' => $id,
       'nimi' => $params['nimi'],
