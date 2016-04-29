@@ -8,21 +8,22 @@
   
   public static function handle_login() {
     $params = $_POST;
-
-    $user = User::authenticate($params['kayttajatunnus'], $params['salasana']);
+  //  Kint::dump($params);
+  //  die("Poks");
+    $user = User::authenticate($params['ktunnus'], $params['password']);
 
     if(!$user) {
-      View::make('muistilista/login.html', array('error' => 'Väärä käyttäjätunnus tai salasana!', 'kayttajatunnus' => $params['kayttajatunnus']));
+      View::make('muistilista/login.html', array('error' => 'Väärä käyttäjätunnus tai salasana!', 'ktunnus' => $params['ktunnus']));
     } else {
       $_SESSION['user'] = $user->id;
 
-      Redirect::to('/', array('message' => 'Tervetuloa takaisin ' . $user->kayttajatunnus . '!'));
+      Redirect::to('/muistilista', array('message' => 'Tervetuloa takaisin ' . $user->ktunnus . '!'));
     }
   }
   
   public static function logout(){
     $_SESSION['user'] = null;
-    Redirect::to('/muistilista/login', array('message' => 'Olet kirjautunut ulos!'));
+    Redirect::to('/login', array('message' => 'Olet kirjautunut ulos!'));
   }
   
 }

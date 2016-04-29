@@ -4,24 +4,24 @@ class MuistilistaController extends BaseController {
 
 
     public static function index() {
-//      self::check_logged_in();
+      self::check_logged_in();
                 $muistilistat = Muistilista::all();
                 View::make('muistilista/index.html', array('muistilistat' => $muistilistat));
     }
 
     public static function create() {
-//      self::check_logged_in();
+      self::check_logged_in();
         View::make('muistilista/uusi.html');
     }
 
     public static function edit($id) {
-//      self::check_logged_in();
+      self::check_logged_in();
         $muistilista = Muistilista::find($id);
         View::make('muistilista/mlista_edit.html', array('muistilista' => $muistilista));
     }
 
     public static function update($id) {
-//      self::check_logged_in();
+      self::check_logged_in();
     
     $params = $_POST;
 //    Kint::dump($params);
@@ -52,7 +52,7 @@ class MuistilistaController extends BaseController {
 
   // Muistilistan poistaminen
   public static function destroy($id) {
-//	  self::check_logged_in();
+	  self::check_logged_in();
     // Alustetaan Muistilista-olio annetulla id:llä
     $muistilista = new Muistilista(array('id' => $id));
     // Kutsutaan Muistilista-malliluokan metodia destroy, joka poistaa pelin sen id:llä
@@ -63,13 +63,13 @@ class MuistilistaController extends BaseController {
   }
 
     public static function show($id) {
-//	  self::check_logged_in();
+	  self::check_logged_in();
         $muistilista = Muistilista::find($id);
         View::make('muistilista/mlista_show.html', array('muistilista'=>$muistilista)); 
     }
 
     public static function store() {
-//      self::check_logged_in();
+      self::check_logged_in();
         // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
         $params = $_POST;
         // Alustetaan uusi Muistilista-luokan olion käyttäjän syöttämillä arvoilla

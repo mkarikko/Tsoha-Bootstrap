@@ -45,7 +45,7 @@
   UserController::handle_login();
   });
 
-  $routes->post('/muistilista/logout', function(){
+  $routes->post('/logout', function(){
   UserController::logout();
   }); 
 

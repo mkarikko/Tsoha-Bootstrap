@@ -69,33 +69,9 @@ class Muistilista extends BaseModel {
     $query = DB::connection()->prepare('UPDATE Muistilista SET nimi = :nimi, luomispaiva = :luomispaiva, tarkeys = :tarkeys, status = :status, voimassaolopaiva = :voimassaolopaiva, kuvaus = :kuvaus WHERE id = :id');  
      $query->execute(array('nimi' => $this->nimi, 'luomispaiva' => $this->luomispaiva, 'tarkeys' => $this->tarkeys, 'status' => $this->status, 'voimassaolopaiva' => $this->voimassaolopaiva, 'kuvaus' => $this->kuvaus, 'id' => $this->id));
       $row = $query->fetch(); 
-//        $this->id = $row['id'];
   }
 
-//    $params = $_POST;
-//    $attributes = array(
-//      'id' => $id,
-//      'nimi' => $params['nimi'],
-//      'luomispaiva' => $params['luomispaiva'],
-//      'tarkeys' => $params['tarkeys'],
-//      'status' => $params['status'],
-//      'voimassaolopaiva' => $params['voimassaolopaiva'],
-//      'kuvaus' => $params['kuvaus']
-//    );
 
-    // Alustetaan Muistilista-olio käyttäjän syöttämillä tiedoilla
-//    $muistilista = new Muistilistaa($attributes);
-//    $errors = $muistilista->errors();
-
-//    if(count($errors) > 0) {
-//      View::make('muistilista/mlista_edit.html', array('errors' => $errors, 'attributes' => $attributes));
-//    } else {
-      // Kutsutaan alustetun olion update-metodia, joka päivittää pelin tiedot tietokannassa
-//      $muistilista->update();
-
-//      Redirect::to('/muistilista/' . $muistilista->id, array('message' => 'Muistilistaa on muokattu onnistuneesti!'));
-//    }
-//  }
  
   public function destroy() {
     $query = DB::connection()->prepare('DELETE FROM Muistilista WHERE id = :id');
