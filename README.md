@@ -4,6 +4,8 @@ Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](https://karikko.users.cs.helsinki.fi/tsoha2)
 * [Linkki dokumentaatiooni](https://www.github.com/mkarikko/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
+* Kirjautuminen: käyttäjätunnus: KalleX, Salasana: K4ll3
+
 
 * [Linkit esimerkkisivuille]
   * Etusivu: (https://karikko.users.cs.helsinki.fi/tsoha2/)
