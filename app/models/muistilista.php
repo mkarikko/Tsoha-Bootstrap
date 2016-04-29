@@ -6,7 +6,7 @@ class Muistilista extends BaseModel {
 
   public function __construct($attributes) {
     parent::__construct($attributes);
-    $this->validators = array('validate_nimi');
+    $this->validators = array('validate_nimi', 'validate_luomispaiva', 'validate_voimassaolopaiva');
   }
 
   public function save() {
@@ -84,5 +84,15 @@ class Muistilista extends BaseModel {
   public function validate_nimi() {
     return parent::validate_string_length($this->nimi);
   }
+  
+  public function validate_luomispaiva() {
+	  return parent::validate_date($this->luomispaiva);
+  }
+  
+  public function validate_voimassaolopaiva() {
+	  return parent::validate_date($this->voimassaolopaiva);
+  }
+	  
+
 
 }

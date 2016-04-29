@@ -49,9 +49,7 @@
   UserController::logout();
   }); 
 
-//  $routes->get('/login', function() {
-//    HelloWorldController::login();
-//  });
+
 
 // --- ESIMERKIT ----
 /*

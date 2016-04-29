@@ -36,6 +36,16 @@ class BaseModel {
 //        }
         return $errors;
     }
+    
+    public function validate_date($date) {
+		$errors = array();
+		if ($date == '' || $date == null) {
+            $errors[] = 'Aseta päivämäärä!';
+        }
+        return $errors;
+	}
+    
+    
 //    public function validate_integer($luku, $min, $max) {
 //        $errors = array();
 //        if (is_numeric($luku)) {

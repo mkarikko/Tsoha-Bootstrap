@@ -26,7 +26,7 @@
       {% for muistilista in muistilistat %}
         <tr>
           <td><a href="{{base_path}}/muistilista/{{muistilista.id}}">{{muistilista.nimi}}</td>
-          <td>{{muistilista.luotu}}</td>
+          <td>{{muistilista.luomispaiva}}</td>
           <td>{{muistilista.tarkeys}}</td>
           <td>
 		{% if muistilista.status %}
