@@ -31,9 +31,9 @@ class BaseModel {
         if (strlen($string) < 3) {
             $errors[] = 'Vähimmäismerkkimäärä on 3!';
         }
-//        if (strlen($string) > $length) {
-//            $errors[] = 'Merkkijono on liian pitkä';
-//        }
+        if (strlen($string) > 50) {
+            $errors[] = 'Merkkijono on liian pitkä!';
+        }
         return $errors;
     }
     

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="alert alert-success">
+    {{message}}
+  </div>
+
+  <h1>{{askare.nimi}}</h1>
+  
+  <!-- Tiedot tulee listana tähän -->
+
+<li><strong>Luomispäivä:</strong> {{askare.luomispaiva}}</li>
+    <li><strong>Tärkeys:</strong> {{askare.tarkeys}}</li>
+    <li><strong>Status:</strong> 
+      {% if askare.suoritettu %}
+      <label class="label label-success">suoritettu</label>
+    {% else %}
+      <label class="label label-danger">kesken</label>
+    {% endif %}
+<!--    <label class="label label-danger">{{askare.status}}</label></li> -->
+    <li><strong>Viimeinen voimassaolopäivä:</strong> {{askare.voimassaolopaiva}}</li>
+  </ul>
+  <!-- Kuvaus tulee tähän -->
+  <p>
+    {{askare.kuvaus}}
+  </p>
+  
+<!-- Painikkeet tähän -->
+  <p>
+    
+     <a href="{{base_path}}/muistilista/askare/{{askare.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
+<!--    <a href="{{base_path}}/muistilista/mlista_edit.html" class="btn btn-default">Muokkaa</a>  -->
+  </p>
+  
+  <p>{{forms.destroy_button("#{base_path}/muistilista/askare/#{askare.id}/destroy")}}</p>
+
+{% endblock %}

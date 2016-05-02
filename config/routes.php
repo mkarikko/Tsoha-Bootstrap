@@ -49,7 +49,36 @@
   UserController::logout();
   }); 
 
+  $routes->get('/muistilista/askare', function() {
+        AskareController::index();
+  });
 
+  $routes->post('/muistilista/askare', function() {
+        AskareController::store();
+  });
+
+  $routes->get('/muistilista/askare/uusi', function() {
+        AskareController::create();
+  });
+
+ $routes->get('/muistilista/askare/:id/muokkaa', function($id) {
+    // Askareen muokkauslomake
+        AskareController::edit($id);
+  });
+
+  $routes->post('/muistilista/askare/:id/muokkaa', function($id) {
+        AskareController::update($id);
+  });
+
+
+  $routes->get('/muistilista/askare/:id', function($id) {
+        AskareController::show($id);
+  });
+
+ 
+  $routes->post('/muistilista/askare/:id/destroy', function($id) {
+        AskareController::destroy($id);
+  });
 
 // --- ESIMERKIT ----
 /*
