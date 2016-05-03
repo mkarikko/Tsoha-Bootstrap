@@ -49,7 +49,7 @@
   UserController::logout();
   }); 
 
-  $routes->get('/muistilista/askare', function() {
+  $routes->get('/muistilista/askare/askare_list', function() {
         AskareController::index();
   });
 

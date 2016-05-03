@@ -1,41 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Käyttäjän Mikis Yleismuistilista</h1>
+
+{% if user_logged_in %}
+  <h1>Käyttäjän {{user_logged_in.ktunnus}} Yleismuistilista</h1>
+{% endif %}
 
   <p>
-    <a href="#" class="btn btn-success">Lisää askare</a>
+    <a href="{{base_path}}/muistilista/askare/uusi" class="btn btn-success">Lisää askare</a>
   </p>
 
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
         <th>Nimi</th>
-        <th>Suoritettava viimeistään</th>
+        <th>Lisäyspäivä</th>       
         <th>Tärkeysaste</th>
         <th>Status</th>
-        <th>Lisäyspäivä</th>
-        <th></th>
+        <th>Suoritettava viimeistään</th>
+        <th>Kuvaus</th>
       </tr>
     </thead>
 
     <tbody>
       <!-- Listataan askareet tähän -->
+      {% for askare in askareet %}
       <tr>
-        <td><a href="#">Hae paketti postista</a></td>
-        <td>11.4.2016</td>
-        <td>4</td>
-        <td><label class="label label-danger">Tekemättä</label></td>
-        <td>29.3.2016</td>
-        <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
+        <td><a href="{{base_path}}/muistilista/askare/{{askare.id}}">{{askare.nimi}}</a></td>
+        <td>{{askare.lisayspaiva}}</td>
+        <td>{{askare.tarkeys}}</td>
+        <td>
+        {% if askare.status %}
+		<label class="label label-success">Suoritettu
+		{% else %}
+		<label class="label label-danger">Kesken
+		{% endif %}
+		</td>
+<!--        <td><label class="label label-danger">{{askare.status}}</label></td> -->
+        <td>{{askare.voimassaolopaiva}}</td>
+        <td>{{askare.kuvaus}}</td>
+        <th><a class="btn btn-default btn-sm" href="{{base_path}}/muistilista/askare/{{askare.id}}/muokkaa">Muokkaa</a></th>
       </tr>
-      <tr>
-        <td><a href="#">PL-kokous</a></td>
-        <td>25.4.2016</td>
-        <td>4</td>
-        <td><label class="label label-danger">kesken</label></td>
-        <td>9.3.2016</td>
-        <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
-      </tr>
+       {% endfor %}
+      
     </tbody>
   </table>
 {% endblock %}

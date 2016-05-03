@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "muistilista/macros/forms.html" as forms %}
 
 <div class="alert alert-success">
     {{message}}
@@ -9,7 +10,7 @@
   
   <!-- Tiedot tulee listana tähän -->
 
-<li><strong>Luomispäivä:</strong> {{askare.luomispaiva}}</li>
+<li><strong>Lisäyspäivä:</strong> {{askare.lisayspaiva}}</li>
     <li><strong>Tärkeys:</strong> {{askare.tarkeys}}</li>
     <li><strong>Status:</strong> 
       {% if askare.suoritettu %}
@@ -33,5 +34,6 @@
   </p>
   
   <p>{{forms.destroy_button("#{base_path}/muistilista/askare/#{askare.id}/destroy")}}</p>
+
 
 {% endblock %}

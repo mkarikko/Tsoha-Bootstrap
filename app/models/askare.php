@@ -2,16 +2,16 @@
 
 class Askare extends BaseModel {
 
-  public $id, $kayttaja_id, $muistilista_id, $nimi, $tarkeys, $luomispaiva, $status, $voimassaolopaiva, $kuvaus;
+  public $id, $kayttaja_id, $muistilista_id, $nimi, $tarkeys, $lisayspaiva, $status, $voimassaolopaiva, $kuvaus;
 
   public function __construct($attributes) {
     parent::__construct($attributes);
-    $this->validators = array('validate_nimi', 'validate_luomispaiva', 'validate_voimassaolopaiva');
+    $this->validators = array('validate_nimi', 'validate_lisayspaiva', 'validate_voimassaolopaiva');
   }
 
   public function save() {
-      $query = DB::connection()->prepare('INSERT INTO Askare (nimi, luomispaiva, tarkeys, status, voimassaolopaiva, kuvaus) VALUES (:nimi, :luomispaiva, :tarkeys, :status, :voimassaolopaiva, :kuvaus) RETURNING id');
-      $query->execute(array('nimi' => $this->nimi, 'luomispaiva' => $this->luomispaiva, 'tarkeys' => $this->tarkeys, 'status' => $this->status, 'voimassaolopaiva' => $this->voimassaolopaiva, 'kuvaus' => $this->kuvaus));
+      $query = DB::connection()->prepare('INSERT INTO Askare (nimi, lisayspaiva, tarkeys, status, voimassaolopaiva, kuvaus) VALUES (:nimi, :lisayspaiva, :tarkeys, :status, :voimassaolopaiva, :kuvaus) RETURNING id');
+      $query->execute(array('nimi' => $this->nimi, 'lisayspaiva' => $this->lisayspaiva, 'tarkeys' => $this->tarkeys, 'status' => $this->status, 'voimassaolopaiva' => $this->voimassaolopaiva, 'kuvaus' => $this->kuvaus));
       $row = $query->fetch();
 //Kint::trace();
 //Kint::dump($row);
@@ -32,7 +32,7 @@ class Askare extends BaseModel {
         'muistilista_id' => $row['muistilista_id'],
         'nimi' => $row['nimi'],
         'tarkeys' => $row['tarkeys'],
-        'luomispaiva' => $row['luomispaiva'],
+        'lisayspaiva' => $row['lisayspaiva'],
         'status' => $row['status'],
         'voimassaolopaiva' => $row['voimassaolopaiva'],
         'kuvaus' => $row['kuvaus']
@@ -54,7 +54,7 @@ class Askare extends BaseModel {
         'kayttaja_id' => $row['kayttaja_id'],
         'muistilista_id' => $row['muistilista_id'],
         'nimi' => $row['nimi'],
-        'luomispaiva' => $row['luomispaiva'],
+        'lisayspaiva' => $row['lisayspaiva'],
         'tarkeys' => $row['tarkeys'],
         'status' => $row['status'],
         'voimassaolopaiva' => $row['voimassaolopaiva'],
@@ -68,8 +68,8 @@ class Askare extends BaseModel {
   }
 
   public function update() {
-    $query = DB::connection()->prepare('UPDATE Askare SET nimi = :nimi, luomispaiva = :luomispaiva, tarkeys = :tarkeys, status = :status, voimassaolopaiva = :voimassaolopaiva, kuvaus = :kuvaus WHERE id = :id');  
-     $query->execute(array('nimi' => $this->nimi, 'luomispaiva' => $this->luomispaiva, 'tarkeys' => $this->tarkeys, 'status' => $this->status, 'voimassaolopaiva' => $this->voimassaolopaiva, 'kuvaus' => $this->kuvaus, 'id' => $this->id));
+    $query = DB::connection()->prepare('UPDATE Askare SET nimi = :nimi, lisayspaiva = :lisayspaiva, tarkeys = :tarkeys, status = :status, voimassaolopaiva = :voimassaolopaiva, kuvaus = :kuvaus WHERE id = :id');  
+     $query->execute(array('nimi' => $this->nimi, 'lisayspaiva' => $this->lisayspaiva, 'tarkeys' => $this->tarkeys, 'status' => $this->status, 'voimassaolopaiva' => $this->voimassaolopaiva, 'kuvaus' => $this->kuvaus, 'id' => $this->id));
       $row = $query->fetch(); 
   }
 
@@ -87,8 +87,8 @@ class Askare extends BaseModel {
     return parent::validate_string_length($this->nimi);
   }
   
-  public function validate_luomispaiva() {
-	  return parent::validate_date($this->luomispaiva);
+  public function validate_lisayspaiva() {
+	  return parent::validate_date($this->lisayspaiva);
   }
   
   public function validate_voimassaolopaiva() {

@@ -29,7 +29,7 @@ class AskareController extends BaseController {
     $attributes = array(
       'id' => $id,
       'nimi' => $params['nimi'],
-      'luomispaiva' => $params['luomispaiva'],
+      'lisayspaiva' => $params['lisayspaiva'],
       'tarkeys' => $params['tarkeys'],
       'status' => $params['status'],
       'voimassaolopaiva' => $params['voimassaolopaiva'],
@@ -46,7 +46,7 @@ class AskareController extends BaseController {
       // Kutsutaan alustetun olion update-metodia, joka päivittää pelin tiedot tietokannassa
       $askare->update();
 
-      Redirect::to('/muistilista/askare/askare_list' . $askare->id, array('message' => 'Askarelistaa on muokattu onnistuneesti!'));
+      Redirect::to('/muistilista/askare/' . $askare->id, array('message' => 'Askaretta on muokattu onnistuneesti!'));
     }
   }
 
@@ -76,7 +76,7 @@ class AskareController extends BaseController {
         
         $attributes = array(
             'nimi' => $params['nimi'],
-            'luomispaiva' => $params['luomispaiva'],
+            'lisayspaiva' => $params['lisayspaiva'],
             'tarkeys' => $params['tarkeys'],
             'status' => $params['status'],
             'voimassaolopaiva' => $params['voimassaolopaiva'],
