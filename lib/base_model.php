@@ -45,19 +45,4 @@ class BaseModel {
         return $errors;
 	}
     
-    
-//    public function validate_integer($luku, $min, $max) {
-//        $errors = array();
-//        if (is_numeric($luku)) {
-//            $errors[] = 'Ei ole luku';
-//        }
-//        if ($luku == null) {
-//            $errors[] = 'luku ei saa olla tyhjä!';
-//        }
-//        if (luku < $min || luku > $max) {
-//            $errors[] = 'luku on liian suuri tai pieni';
-//        }
-//        return $errors;
-//    }
-    
 }

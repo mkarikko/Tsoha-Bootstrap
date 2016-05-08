@@ -8,8 +8,7 @@
   
   public static function handle_login() {
     $params = $_POST;
-  //  Kint::dump($params);
-  //  die("Poks");
+
     $user = User::authenticate($params['ktunnus'], $params['password']);
 
     if(!$user) {

@@ -10,11 +10,10 @@ class Askare extends BaseModel {
   }
 
   public function save() {
-      $query = DB::connection()->prepare('INSERT INTO Askare (nimi, lisayspaiva, tarkeys, status, voimassaolopaiva, kuvaus) VALUES (:nimi, :lisayspaiva, :tarkeys, :status, :voimassaolopaiva, :kuvaus) RETURNING id');
-      $query->execute(array('nimi' => $this->nimi, 'lisayspaiva' => $this->lisayspaiva, 'tarkeys' => $this->tarkeys, 'status' => $this->status, 'voimassaolopaiva' => $this->voimassaolopaiva, 'kuvaus' => $this->kuvaus));
+      $query = DB::connection()->prepare('INSERT INTO Askare (nimi, lisayspaiva, tarkeys, status, voimassaolopaiva, kuvaus, kayttaja_id) VALUES (:nimi, :lisayspaiva, :tarkeys, :status, :voimassaolopaiva, :kuvaus, :kayttaja_id) RETURNING id');
+      $query->execute(array('nimi' => $this->nimi, 'lisayspaiva' => $this->lisayspaiva, 'tarkeys' => $this->tarkeys, 'status' => $this->status, 'voimassaolopaiva' => $this->voimassaolopaiva, 'kuvaus' => $this->kuvaus, 'kayttaja_id' =>$this->kayttaja_id));
       $row = $query->fetch();
-//Kint::trace();
-//Kint::dump($row);
+
 
       $this->id = $row['id'];
   }
@@ -42,10 +41,35 @@ class Askare extends BaseModel {
     return $askareet;
 
   } 
+  
+  
+  public static function hae_askareet($id) {
+    $query = DB::connection()->prepare('SELECT Askare.nimi, Askare.id, Askare.kayttaja_id FROM Askare, Muistilistan_askare WHERE Muistilista.id AND Muistilistan_askare.muistilista_id = :muistilista_id');
+    $query->execute(array('muistilista_id' => $muistilista_id));
+    $row = $query->fetch();
+
+    if($row) {
+      $askare = new Askare(array(
+        'id' => $row['id'],
+        'kayttaja_id' => $row['kayttaja_id'],
+        'muistilista_id' => $row['muistilista_id'],
+        'nimi' => $row['nimi'],
+        'lisayspaiva' => $row['lisayspaiva'],
+        'tarkeys' => $row['tarkeys'],
+        'status' => $row['status'],
+        'voimassaolopaiva' => $row['voimassaolopaiva'],
+        'kuvaus' => $row['kuvaus']
+      ));
+
+      return $askare;
+    } 
+
+    return null;
+  }
 
   public static function find($id) {
     $query = DB::connection()->prepare('SELECT * FROM Askare WHERE id = :id LIMIT 1');
-    $query->execute(array('id' => (int)$id));
+    $query->execute(array('id' => $id));
     $row = $query->fetch();
 
     if($row) {
@@ -76,10 +100,13 @@ class Askare extends BaseModel {
 
  
   public function destroy() {
+	$query = DB::connection()->prepare('DELETE FROM Muistilistan_askare WHERE muistilista_id = :muistilista_id');
+    $query->execute(array('muistilista_id' => $this->muistilista_id));
+    $row = $query->fetch();
+  	  
     $query = DB::connection()->prepare('DELETE FROM Askare WHERE id = :id');
     $query->execute(array('id' => $this->id));
-    $row = $query->fetch();
-                 
+    $row = $query->fetch();                 
   }
 
 

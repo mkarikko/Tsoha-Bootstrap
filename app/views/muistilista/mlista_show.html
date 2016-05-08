@@ -20,11 +20,15 @@
     {% endif %}
 <!--    <label class="label label-danger">{{muistilista.status}}</label></li> -->
     <li><strong>Viimeinen voimassaolopäivä:</strong> {{muistilista.voimassaolopaiva}}</li>
+  
+  <li><strong>Askareet:</strong> {% for askare in muistilista.askareet %}{{askare.nimi}} {% endfor %}</li>
   </ul>
   <!-- Kuvaus tulee tähän -->
   <p>
     {{muistilista.kuvaus}}
   </p>
+  
+<!--  <p> Tähän pitäisi tulla lista muistilistan sisältämistä askareista</p>
   
 <!-- Painikkeet tähän -->
   <p>
@@ -32,6 +36,8 @@
      <a href="{{base_path}}/muistilista/{{muistilista.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
 <!--    <a href="{{base_path}}/muistilista/mlista_edit.html" class="btn btn-default">Muokkaa</a>  -->
   </p>
+  
+  <p> <a href="{{base_path}}/muistilista/askare/uusi" class="btn btn-default">Lisää uusi askare</a>
   
   <p>{{forms.destroy_button("#{base_path}/muistilista/#{muistilista.id}/destroy")}}</p>
 

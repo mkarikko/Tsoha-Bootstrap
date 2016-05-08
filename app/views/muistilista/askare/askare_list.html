@@ -2,7 +2,7 @@
 {% block content %}
 
 {% if user_logged_in %}
-  <h1>Käyttäjän {{user_logged_in.ktunnus}} Yleismuistilista</h1>
+  <h1>Käyttäjän {{user_logged_in.ktunnus}} Askareet</h1>
 {% endif %}
 
   <p>
@@ -17,6 +17,7 @@
         <th>Tärkeysaste</th>
         <th>Status</th>
         <th>Suoritettava viimeistään</th>
+        <th>Muistilista</th>
         <th>Kuvaus</th>
       </tr>
     </thead>
@@ -37,7 +38,9 @@
 		</td>
 <!--        <td><label class="label label-danger">{{askare.status}}</label></td> -->
         <td>{{askare.voimassaolopaiva}}</td>
+        <td>{{askare.muistilista_id}}</td>
         <td>{{askare.kuvaus}}</td>
+    
         <th><a class="btn btn-default btn-sm" href="{{base_path}}/muistilista/askare/{{askare.id}}/muokkaa">Muokkaa</a></th>
       </tr>
        {% endfor %}

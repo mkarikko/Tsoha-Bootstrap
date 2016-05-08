@@ -1,5 +1,8 @@
 <?php
 
+//require 'app/models/askare.php';
+//require 'app/models/muistilista.php';
+
 class AskareController extends BaseController {
 
 
@@ -8,10 +11,36 @@ class AskareController extends BaseController {
                 $askareet = Askare::all();
                 View::make('muistilista/askare/askare_list.html', array('askareet' => $askareet));
     }
-
+    
     public static function create() {
       self::check_logged_in();
         View::make('muistilista/askare/askare_uusi.html');
+    }
+    
+    public static function store() {
+      self::check_logged_in();
+      $params = $_POST;
+     // $kayttaja_id = self::get_user_logged_in()->kayttaja_id;
+      $attributes = array(
+        'kayttaja_id' => $_SESSION['user'],
+        'nimi' => $params['nimi'],
+        'lisayspaiva' => $params['lisayspaiva'],
+        'tarkeys' => $params['tarkeys'],
+        'status' => $params['status'],
+        'voimassaolopaiva' => $params['voimassaolopaiva'],
+        'kuvaus' => $params['kuvaus']
+        
+      );
+      
+      $askare = new Askare($attributes);
+      $errors = $askare->errors();
+      if (count($errors) == 0) {
+		  $askare -> save();
+		  Redirect::to('/muistilista/askare/' . $askare->id, array('message' => 'Uusi askare on lisätty muistilistaasi!'));
+	  } else {
+         //   $errors_askareet = Askareet:all($kayttaja_id);
+            View::make('/muistilista/askare/askare_uusi.html', array('errors' => $errors, 'attributes' => $attributes));
+        }     
     }
 
     public static function edit($id) {
@@ -24,9 +53,9 @@ class AskareController extends BaseController {
       self::check_logged_in();
     
     $params = $_POST;
-//    Kint::dump($params);
-//    die("tuleeko tänne");
+
     $attributes = array(
+      'kayttaja_id' => $_SESSION['user'],
       'id' => $id,
       'nimi' => $params['nimi'],
       'lisayspaiva' => $params['lisayspaiva'],
@@ -34,6 +63,7 @@ class AskareController extends BaseController {
       'status' => $params['status'],
       'voimassaolopaiva' => $params['voimassaolopaiva'],
       'kuvaus' => $params['kuvaus']
+      
     );
 
     // Alustetaan Askare-olio käyttäjän syöttämillä tiedoilla
@@ -67,8 +97,11 @@ class AskareController extends BaseController {
         $askare = Askare::find($id);
         View::make('muistilista/askare/askare_show.html', array('askare'=>$askare)); 
     }
+}
 
-    public static function store() {
+// TÄSTÄ ALASPÄIN TURHAA SÄÄTÖÄ
+
+/*    public static function store() {
       self::check_logged_in();
         // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
         $params = $_POST;
@@ -106,4 +139,4 @@ class AskareController extends BaseController {
         // Ohjataan käyttäjä lisäyksen jälkeen askareen esittelysivulle
         
     
-}
+} */ 

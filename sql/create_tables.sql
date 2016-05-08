@@ -1,7 +1,6 @@
 CREATE TABLE Kayttaja(
   id SERIAL PRIMARY KEY,
   ktunnus varchar(50) NOT NULL,
-  nimi varchar(50) NOT NULL,
   password varchar(50) NOT NULL
 );
 
@@ -28,3 +27,8 @@ CREATE TABLE Askare(
   kuvaus text
 );
 
+CREATE TABLE Muistilistan_askare(
+  muistilista_id INTEGER REFERENCES Muistilista(id) NOT NULL,
+  askare_id INTEGER REFERENCES Askare(id) NOT NULL,
+  PRIMARY KEY (muistilista_id, askare_id)
+);
